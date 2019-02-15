@@ -10,7 +10,7 @@ First, you have to update the NuGet packages. To do this, follow these steps:
   3. Paste "Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r"
   4. Hit enter
 
-In the Web.config file, the <connectionStrings> is connected to a local SQL database on my computer so I'm not sure if you all will be able to access it. I believe we need to configure a cloud hosted Azure SQL database.
+In the Web.config file, the connectionStrings is connected to a local SQL database on my computer so I'm not sure if you all will be able to access it. I believe we need to configure a cloud hosted Azure SQL database.
   
 Once, we set up the Azure SQL database. We need to run the following query:
 
@@ -35,6 +35,6 @@ Now you should be able to run the web app. Navigate to this page: ~/Account/Logi
 
 To login, use these credentials:
 
-  username: admin
+username: admin
 
-  password: password123
+password: password123
