@@ -34,5 +34,7 @@ USE AttendanceDB
 Now you should be able to run the web app. Navigate to this page: ~/Account/Login
 
 To login, use these credentials:
+
   username: admin
+
   password: password123
