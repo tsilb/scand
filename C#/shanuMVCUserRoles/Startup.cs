@@ -38,10 +38,10 @@ namespace shanuMVCUserRoles
 				//Here we create a Admin super user who will maintain the website				
 
 				var user = new ApplicationUser();
-				user.UserName = "admin";
-				user.Email = "admin@scand.com";
+				user.UserName = "scandadmin";
+				user.Email = "scandadmin@gmail.com";
 
-				string userPWD = "password123";
+				string userPWD = "$Password123";
 
 				var chkUser = UserManager.Create(user, userPWD);
 
