@@ -35,6 +35,6 @@ Now you should be able to run the web app. Navigate to this page: ~/Account/Logi
 
 To login, use these credentials:
 
-username: admin
+username: scandadmin
 
-password: password123
+password: $Password123
