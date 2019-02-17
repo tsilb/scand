@@ -16,21 +16,6 @@ Once, we set up the Azure SQL database. We need to run the following query:
 
 -----------------------------------------------------------------------------------------------------
 
-USE MASTER;   
-
-IF EXISTS (SELECT [name] FROM sys.databases WHERE [name] = 'AttendanceDB' )   
-BEGIN   
-ALTER DATABASE AttendanceDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE   
-DROP DATABASE AttendanceDB ;   
-END     
-   
-CREATE DATABASE AttendanceDB   
-GO   
-   
-USE AttendanceDB 
-
------------------------------------------------------------------------------------------------------
-
 Now you should be able to run the web app. Navigate to this page: ~/Account/Login
 
 To login, use these credentials:
