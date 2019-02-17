@@ -4,6 +4,14 @@ From this tutorial: https://code.msdn.microsoft.com/ASPNET-MVC-5-Security-And-44
 
 -----------------------------------------------------------------------------------------------------
 
+To run the web app, you will likely need Microsoft SQL Server Management Studio.
+  1. Server name: scand.database.windows.net
+  2. Authentication: SQL Server Authentication
+  3. Login: scandadmin
+  4. Password: C@p$t0n3
+  
+-----------------------------------------------------------------------------------------------------
+
 First, you have to update the NuGet packages. To do this, follow these steps:
   1. Navigate to the Tools menu dropdown on the top of VS
   2. Go down to NuGet Package Manager > Packet Manager Console
