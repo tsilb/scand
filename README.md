@@ -2,6 +2,7 @@
 
 From this tutorial: https://code.msdn.microsoft.com/ASPNET-MVC-5-Security-And-44cbdb97
 
+
 -----------------------------------------------------------------------------------------------------
 
 First, you have to update the NuGet packages. To do this, follow these steps:
