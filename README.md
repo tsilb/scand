@@ -27,4 +27,4 @@ Azure SQL Database Credentials
   1. Server name: scand.database.windows.net
   2. Authentication: SQL Server Authentication
   3. Login: scandadmin
-  4. Password: C@p$t0n3
+  4. Password: Capstone1
