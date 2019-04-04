@@ -21,6 +21,10 @@
             <td>@Model.Rows[i][1]</td>
             <td>@Model.Rows[i][2]</td>
             <td>@Model.Rows[i][3]</td>
+            <td>
+                <a href="@Url.Action("Edit", "Home", new {@id=@Model.Rows[i][0] })">Edit</a> | 
+                <a href="@Url.Action("Delete", "Home", new {@id=@Model.Rows[i][0] })">Delete</a>
+            </td>
         </tr>
     }
 </table>

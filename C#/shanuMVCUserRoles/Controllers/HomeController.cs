@@ -53,45 +53,57 @@ namespace shanuMVCUserRoles.Controllers
         // GET: Scanned/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ScannedViewModel scannedViewModel = new ScannedViewModel();
+            DataTable dtblScanned = new DataTable();
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string ed = "SELECT * FROM Logs Where ID = @ID";
+                SqlDataAdapter sqlDa = new SqlDataAdapter(ed, sqlCon);
+                sqlDa.SelectCommand.Parameters.AddWithValue("@ID", id);
+                sqlDa.Fill(dtblScanned);
+            }
+            if (dtblScanned.Rows.Count == 1)
+            {
+                scannedViewModel.UserName = dtblScanned.Rows[0][1].ToString();
+                scannedViewModel.Room = dtblScanned.Rows[0][2].ToString();
+                scannedViewModel.Time = dtblScanned.Rows[0][3].ToString();
+                return View(scannedViewModel);
+            }
+            else
+                return RedirectToAction("Index");                
         }
 
         // POST: Scanned/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(ScannedViewModel scannedViewModel)
         {
-            try
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                sqlCon.Open();
+                string ed = "UPDATE Logs SET UserName = @UserName , Room = @Room , Time = @Time WHERE ID = @ID";
+                SqlCommand sqlCmd = new SqlCommand(ed, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@ID", scannedViewModel.ID);
+                sqlCmd.Parameters.AddWithValue("@UserName", scannedViewModel.UserName);
+                sqlCmd.Parameters.AddWithValue("@Room", scannedViewModel.Room);
+                sqlCmd.Parameters.AddWithValue("@Time", scannedViewModel.Time);
+                sqlCmd.ExecuteNonQuery();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         // GET: Scanned/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: Scanned/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                sqlCon.Open();
+                string del = "DELETE FROM Logs WHERE ID = @ID";
+                SqlCommand sqlCmd = new SqlCommand(del, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@ID", id);
+                sqlCmd.ExecuteNonQuery();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult About()
