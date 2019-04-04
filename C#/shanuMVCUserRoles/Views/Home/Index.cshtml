@@ -1,23 +1,26 @@
-﻿@using shanuMVCUserRoles.Models
-
+﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Index";
 }
-@model List<ScannedViewModel>
-<h1>Records</h1>
 
-<table cellpadding="10">
+<h2>Index</h2>
+
+<a href="@Url.Action("Create","Home")">Create entry</a>
+<br />
+<br />
+
+<table class="table table-striped">
     <tr>
         <th>UserName</th>
         <th>Room</th>
         <th>Time</th>
     </tr>
-    @foreach (var scanned in Model)
+    @for (int i = 0; i < Model.Rows.Count; i++)
     {
         <tr>
-            <td>@scanned.UserName</td>
-            <td>@scanned.Room</td>
-            <td>@scanned.Time</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
         </tr>
     }
 </table>
