@@ -12,6 +12,7 @@ namespace shanuMVCUserRoles.Controllers
 	public class HomeController : Controller
 	{
         string connectionString = "Server=tcp:scand2.database.windows.net,1433;Initial Catalog=AttendanceDB;Persist Security Info=False;User ID=scandadmin;Password=Capstone1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        [Authorize]
         [HttpGet]
         public ActionResult Index()
         {
@@ -26,6 +27,7 @@ namespace shanuMVCUserRoles.Controllers
         }
 
         // GET: Home/Create
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {
@@ -33,6 +35,7 @@ namespace shanuMVCUserRoles.Controllers
         }
 
         // POST: Home/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(ScannedViewModel scannedViewModel)
         {
@@ -51,6 +54,7 @@ namespace shanuMVCUserRoles.Controllers
         }
 
         // GET: Scanned/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             ScannedViewModel scannedViewModel = new ScannedViewModel();
@@ -75,6 +79,7 @@ namespace shanuMVCUserRoles.Controllers
         }
 
         // POST: Scanned/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(ScannedViewModel scannedViewModel)
         {
@@ -93,6 +98,7 @@ namespace shanuMVCUserRoles.Controllers
         }
 
         // GET: Scanned/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
