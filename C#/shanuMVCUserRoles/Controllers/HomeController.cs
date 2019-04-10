@@ -9,8 +9,8 @@ using System.Data;
 
 namespace shanuMVCUserRoles.Controllers
 {
-	public class HomeController : Controller
-	{
+    public class HomeController : Controller
+    {
         string connectionString = "Server=tcp:scand2.database.windows.net,1433;Initial Catalog=AttendanceDB;Persist Security Info=False;User ID=scandadmin;Password=Capstone1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         [Authorize]
         [HttpGet]
@@ -75,7 +75,7 @@ namespace shanuMVCUserRoles.Controllers
                 return View(scannedViewModel);
             }
             else
-                return RedirectToAction("Index");                
+                return RedirectToAction("Index");
         }
 
         // POST: Scanned/Edit/5
@@ -113,17 +113,17 @@ namespace shanuMVCUserRoles.Controllers
         }
 
         public ActionResult About()
-		{
-			ViewBag.Message = "Your application description page.";
+        {
+            ViewBag.Message = "Your application description page.";
 
-			return View();
-		}
+            return View();
+        }
 
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
 
-			return View();
-		}
+            return View();
+        }
     }
 }

@@ -22,3 +22,21 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.white-text a {
+    color: #ffffff !important;
+}
+
+.white-text a:hover {
+    color: #cccccc !important;
+}
+
+.blue-btn {
+    color: #ffffff;
+    background-color: #000080;
+}
+
+.blue-btn:hover {
+    color: #ffffff;
+    background-color: #0000e6;
+}
