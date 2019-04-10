@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>Front End Test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">RegisterCase</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:5580/Account/Login?ReturnUrl=%2F<datalist><option>http://localhost:5580/Account/Login?ReturnUrl=%2F</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Register as a new user<datalist><option>link=Register as a new user</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Remember me?'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::a[1]</option><option>//a[contains(text(),'Register as a new user')]</option><option>//section[@id='loginForm']/form/p/a</option><option>xpath=(//a[contains(@href, '/Account/Register')])[2]</option><option>//p/a</option><option>css=p &gt; a</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=Email<datalist><option>id=Email</option><option>name=Email</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Register.'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserName'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserID'])[1]/preceding::input[2]</option><option>//input[@id='Email']</option><option>//div/input</option><option>css=#Email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=Email<datalist><option>id=Email</option><option>name=Email</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Register.'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserName'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserID'])[1]/preceding::input[2]</option><option>//input[@id='Email']</option><option>//div/input</option><option>css=#Email</option></datalist></td><td>anon@anon.com</td>
+</tr>
+<tr><td>type</td><td>id=UserName<datalist><option>id=UserName</option><option>name=UserName</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserName'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserID'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/preceding::input[2]</option><option>//input[@id='UserName']</option><option>//div[3]/div/input</option><option>css=#UserName</option></datalist></td><td>BillDoe</td>
+</tr>
+<tr><td>type</td><td>id=UserID<datalist><option>id=UserID</option><option>name=UserID</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserID'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserName'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Confirm password'])[1]/preceding::input[2]</option><option>//input[@id='UserID']</option><option>//div[4]/div/input</option><option>css=#UserID</option></datalist></td><td>11122333</td>
+</tr>
+<tr><td>click</td><td>id=Password<datalist><option>id=Password</option><option>name=Password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserID'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Confirm password'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='user Role'])[1]/preceding::input[2]</option><option>//input[@id='Password']</option><option>//div[5]/div/input</option><option>css=#Password</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=Password<datalist><option>id=Password</option><option>name=Password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserID'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Confirm password'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='user Role'])[1]/preceding::input[2]</option><option>//input[@id='Password']</option><option>//div[5]/div/input</option><option>css=#Password</option></datalist></td><td>Anon#123</td>
+</tr>
+<tr><td>type</td><td>id=ConfirmPassword<datalist><option>id=ConfirmPassword</option><option>name=ConfirmPassword</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Confirm password'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='user Role'])[1]/preceding::input[1]</option><option>//input[@id='ConfirmPassword']</option><option>//div[6]/div/input</option><option>css=#ConfirmPassword</option></datalist></td><td>Anon#123</td>
+</tr>
+<tr><td>select</td><td>id=UserRoles<datalist><option>id=UserRoles</option><option>name=UserRoles</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='user Role'])[1]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Confirm password'])[1]/following::select[1]</option><option>//select[@id='UserRoles']</option><option>//select</option><option>css=#UserRoles</option></datalist></td><td>label=Employee</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='user Role'])[1]/following::input[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='user Role'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Confirm password'])[1]/following::input[2]</option><option>//input[@value='Register']</option><option>//div[8]/div/input</option><option>css=input.btn.btn-default</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">LoginTest</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:5580/Account/Login?ReturnUrl=%2F<datalist><option>http://localhost:5580/Account/Login?ReturnUrl=%2F</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=UserName<datalist><option>id=UserName</option><option>name=UserName</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserName'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Log in'])[2]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Remember me?'])[1]/preceding::input[4]</option><option>//input[@id='UserName']</option><option>//section[@id='loginForm']/form/div/div/input</option><option>//div/input</option><option>css=#UserName</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=UserName<datalist><option>id=UserName</option><option>name=UserName</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserName'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Log in'])[2]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Remember me?'])[1]/preceding::input[4]</option><option>//input[@id='UserName']</option><option>//section[@id='loginForm']/form/div/div/input</option><option>//div/input</option><option>css=#UserName</option></datalist></td><td>BillDoe</td>
+</tr>
+<tr><td>type</td><td>id=Password<datalist><option>id=Password</option><option>name=Password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='UserName'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Remember me?'])[1]/preceding::input[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Register as a new user'])[1]/preceding::input[4]</option><option>//input[@id='Password']</option><option>//section[@id='loginForm']/form/div[2]/div/input</option><option>//div[2]/div/input</option><option>css=#Password</option></datalist></td><td>Anon#123</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Remember me?'])[1]/following::input[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Remember me?'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::input[4]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Register as a new user'])[1]/preceding::input[1]</option><option>//input[@value='Log in']</option><option>//section[@id='loginForm']/form/div[4]/div/input</option><option>//div[4]/div/input</option><option>css=input.btn.btn-default</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
