@@ -10,10 +10,10 @@ using Microsoft.AspNet.Identity;
 
 namespace shanuMVCUserRoles.Controllers
 {
-    public class HomeController : Controller
+    public class ManageUserController : Controller
     {
         string connectionString = "Server=tcp:scand2.database.windows.net,1433;Initial Catalog=AttendanceDB;Persist Security Info=False;User ID=scandadmin;Password=Capstone1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Index()
         {
@@ -21,18 +21,8 @@ namespace shanuMVCUserRoles.Controllers
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                bool result = User.IsInRole("Admin");
-                string user_name = User.Identity.GetUserName();
-                if (result)
-                {
-                    SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT * FROM Logs ORDER BY ID DESC", sqlCon);
-                    sqlDa.Fill(dtblScanned);
-                }
-                else
-                {                                        
-                    SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT * FROM Logs WHERE UserName = '" + user_name + "' ORDER BY ID DESC", sqlCon);                                        
-                    sqlDa.Fill(dtblScanned);
-                }                                
+                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT * FROM AspNetUsers ORDER BY ID DESC", sqlCon);
+                sqlDa.Fill(dtblScanned);
             }
             return View(dtblScanned);
         }
@@ -42,7 +32,7 @@ namespace shanuMVCUserRoles.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new ScannedViewModel());
+            return View(new ManageUserModel());
         }
 
         // POST: Home/Create
@@ -66,24 +56,23 @@ namespace shanuMVCUserRoles.Controllers
 
         // GET: Scanned/Edit/5
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            ScannedViewModel scannedViewModel = new ScannedViewModel();
-            DataTable dtblScanned = new DataTable();
+            ManageUserModel manageUserModel = new ManageUserModel();
+            DataTable dtblUser = new DataTable();
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                string ed = "SELECT * FROM Logs Where ID = @ID";
+                string ed = "SELECT * FROM AspNetUsers Where Id = @Id";
                 SqlDataAdapter sqlDa = new SqlDataAdapter(ed, sqlCon);
-                sqlDa.SelectCommand.Parameters.AddWithValue("@ID", id);
-                sqlDa.Fill(dtblScanned);
+                sqlDa.SelectCommand.Parameters.AddWithValue("@Id", id);
+                sqlDa.Fill(dtblUser);
             }
-            if (dtblScanned.Rows.Count == 1)
-            {
-                scannedViewModel.UserName = dtblScanned.Rows[0][1].ToString();
-                scannedViewModel.Room = dtblScanned.Rows[0][2].ToString();
-                scannedViewModel.Time = dtblScanned.Rows[0][3].ToString();
-                return View(scannedViewModel);
+            if (dtblUser.Rows.Count == 1)
+            {                
+                manageUserModel.UserName = dtblUser.Rows[0][11].ToString();
+                manageUserModel.Email = dtblUser.Rows[0][1].ToString();                
+                return View(manageUserModel);
             }
             else
                 return RedirectToAction("Index");
@@ -92,17 +81,16 @@ namespace shanuMVCUserRoles.Controllers
         // POST: Scanned/Edit/5
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Edit(ScannedViewModel scannedViewModel)
+        public ActionResult Edit(ManageUserModel manageUserModel)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                string ed = "UPDATE Logs SET UserName = @UserName , Room = @Room , Time = @Time WHERE ID = @ID";
+                string ed = "UPDATE AspNetUsers SET UserName = @UserName , Email = @Email WHERE Id = @Id";
                 SqlCommand sqlCmd = new SqlCommand(ed, sqlCon);
-                sqlCmd.Parameters.AddWithValue("@ID", scannedViewModel.ID);
-                sqlCmd.Parameters.AddWithValue("@UserName", scannedViewModel.UserName);
-                sqlCmd.Parameters.AddWithValue("@Room", scannedViewModel.Room);
-                sqlCmd.Parameters.AddWithValue("@Time", scannedViewModel.Time);
+                sqlCmd.Parameters.AddWithValue("@Id", manageUserModel.Id);
+                sqlCmd.Parameters.AddWithValue("@UserName", manageUserModel.UserName);
+                sqlCmd.Parameters.AddWithValue("@Email", manageUserModel.Email);                
                 sqlCmd.ExecuteNonQuery();
             }
             return RedirectToAction("Index");
@@ -110,31 +98,17 @@ namespace shanuMVCUserRoles.Controllers
 
         // GET: Scanned/Delete/5
         [Authorize(Roles = "Admin")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                string del = "DELETE FROM Logs WHERE ID = @ID";
+                string del = "DELETE FROM AspNetUsers WHERE Id = @Id";
                 SqlCommand sqlCmd = new SqlCommand(del, sqlCon);
-                sqlCmd.Parameters.AddWithValue("@ID", id);
+                sqlCmd.Parameters.AddWithValue("@Id", id);
                 sqlCmd.ExecuteNonQuery();
             }
             return RedirectToAction("Index");
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

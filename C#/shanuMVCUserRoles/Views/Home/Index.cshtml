@@ -2,19 +2,23 @@
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>Index</h2>
 
-<a href="@Url.Action("Create","Home")">Create entry</a>
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("Create","Home")">Create entry</a>
+    <br />
+}
 <br />
-<br />
-
 <table class="table table-striped">
     <tr>
         <th>UserName</th>
         <th>Room</th>
         <th>Time</th>
-        <th>Functions</th>
+        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
+            <th>Functions</th>
+        }
     </tr>
     @for (int i = 0; i < Model.Rows.Count; i++)
     {
@@ -22,10 +26,13 @@
             <td>@Model.Rows[i][1]</td>
             <td>@Model.Rows[i][2]</td>
             <td>@Model.Rows[i][3]</td>
-            <td>
-                <a href="@Url.Action("Edit", "Home", new {@id=@Model.Rows[i][0] })">Edit</a> | 
-                <a href="@Url.Action("Delete", "Home", new {@id=@Model.Rows[i][0] })">Delete</a>
-            </td>
+            @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+            {
+                <td>
+                    <a href="@Url.Action("Edit", "Home", new { @id = @Model.Rows[i][0] })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Home", new { @id = @Model.Rows[i][0] })">Delete</a>
+                </td>
+            }
         </tr>
     }
 </table>
