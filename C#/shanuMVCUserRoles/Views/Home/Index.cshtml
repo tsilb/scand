@@ -4,7 +4,7 @@
 }
 <h2>Index</h2>
 
-@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+@if (ViewContext.HttpContext.User.IsInRole("Admin") | ViewContext.HttpContext.User.IsInRole("Professor"))
 {
     <a href="@Url.Action("Create","Home")">Create entry</a>
     <br />
@@ -15,7 +15,7 @@
         <th>UserName</th>
         <th>Room</th>
         <th>Time</th>
-        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+        @if (ViewContext.HttpContext.User.IsInRole("Admin") | ViewContext.HttpContext.User.IsInRole("Professor"))
         {
             <th>Functions</th>
         }
@@ -26,7 +26,7 @@
             <td>@Model.Rows[i][1]</td>
             <td>@Model.Rows[i][2]</td>
             <td>@Model.Rows[i][3]</td>
-            @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+            @if (ViewContext.HttpContext.User.IsInRole("Admin") | ViewContext.HttpContext.User.IsInRole("Professor"))
             {
                 <td>
                     <a href="@Url.Action("Edit", "Home", new { @id = @Model.Rows[i][0] })">Edit</a> |

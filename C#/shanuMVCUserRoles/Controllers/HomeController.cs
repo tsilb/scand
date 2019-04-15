@@ -22,12 +22,13 @@ namespace shanuMVCUserRoles.Controllers
             {
                 sqlCon.Open();
                 bool result = User.IsInRole("Admin");
+                bool result2 = User.IsInRole("Professor");
                 string user_name = User.Identity.GetUserName();
-                if (result)
+                if (result | result2)
                 {
                     SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT * FROM Logs ORDER BY ID DESC", sqlCon);
                     sqlDa.Fill(dtblScanned);
-                }
+                }                
                 else
                 {                                        
                     SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT * FROM Logs WHERE UserName = '" + user_name + "' ORDER BY ID DESC", sqlCon);                                        
@@ -38,7 +39,7 @@ namespace shanuMVCUserRoles.Controllers
         }
 
         // GET: Home/Create
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Professor")]
         [HttpGet]
         public ActionResult Create()
         {
@@ -46,7 +47,7 @@ namespace shanuMVCUserRoles.Controllers
         }
 
         // POST: Home/Create
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Professor")]
         [HttpPost]
         public ActionResult Create(ScannedViewModel scannedViewModel)
         {
@@ -65,7 +66,7 @@ namespace shanuMVCUserRoles.Controllers
         }
 
         // GET: Scanned/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Professor")]
         public ActionResult Edit(int id)
         {
             ScannedViewModel scannedViewModel = new ScannedViewModel();
@@ -90,7 +91,7 @@ namespace shanuMVCUserRoles.Controllers
         }
 
         // POST: Scanned/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Professor")]
         [HttpPost]
         public ActionResult Edit(ScannedViewModel scannedViewModel)
         {
@@ -109,7 +110,7 @@ namespace shanuMVCUserRoles.Controllers
         }
 
         // GET: Scanned/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Professor")]
         public ActionResult Delete(int id)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionString))

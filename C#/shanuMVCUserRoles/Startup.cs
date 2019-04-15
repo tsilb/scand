@@ -53,20 +53,20 @@ namespace shanuMVCUserRoles
 				}
 			}
 
-			// creating Creating Manager role 
-			if (!roleManager.RoleExists("Manager"))
+			// creating Professor role 
+			if (!roleManager.RoleExists("Professor"))
 			{
 				var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-				role.Name = "Manager";
+				role.Name = "Professor";
 				roleManager.Create(role);
 
 			}
 
-			// creating Creating Employee role 
-			if (!roleManager.RoleExists("Employee"))
+			// creating Student role 
+			if (!roleManager.RoleExists("Student"))
 			{
 				var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-				role.Name = "Employee";
+				role.Name = "Student";
 				roleManager.Create(role);
 
 			}
