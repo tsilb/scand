@@ -30,7 +30,7 @@
             {
                 <td>
                     <a href="@Url.Action("Edit", "Home", new { @id = @Model.Rows[i][0] })">Edit</a> |
-                    <a href="@Url.Action("Delete", "Home", new { @id = @Model.Rows[i][0] })">Delete</a>
+                    <a href="@Url.Action("Delete", "Home", new { @id = @Model.Rows[i][0] })" onclick="return confirm('Are you sure you want to Delete?')">Delete</a>
                 </td>
             }
         </tr>
